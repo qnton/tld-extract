@@ -10,6 +10,10 @@ var parse_url = function (remote_url, options) {
 var tlds = null;
 
 var parse_host = function (host, options) {
+  if (!host) {
+    throw new Error("Host parameter is null or undefined.");
+  }
+
   let allowPrivateTLD = (options && options.allowPrivateTLD) || false;
   let allowUnknownTLD = (options && options.allowUnknownTLD) || false;
   let allowDotlessTLD = (options && options.allowDotlessTLD) || false;

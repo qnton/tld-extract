@@ -1,8 +1,4 @@
-[![Build Status](https://github.com/131/node-tld/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/131/node-tld/actions/workflows/test.yml)
-[![Coverage Status](https://coveralls.io/repos/github/131/node-tld/badge.svg?branch=master)](https://coveralls.io/github/131/node-tld?branch=master)
-[![Version](https://img.shields.io/npm/v/tld-extract.svg)](https://www.npmjs.com/package/tld-extract)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
-[![Code style](https://img.shields.io/badge/code%2fstyle-ivs-green.svg)](https://www.npmjs.com/package/eslint-plugin-ivs)
+[![Build Status](https://github.com/131/node-tld/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/131/node-tld/actions/workflows/test.yml) [![Coverage Status](https://coveralls.io/repos/github/131/node-tld/badge.svg?branch=master)](https://coveralls.io/github/131/node-tld?branch=master) [![Version](https://img.shields.io/npm/v/tld-extract.svg)](https://www.npmjs.com/package/tld-extract) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT) [![Code style](https://img.shields.io/badge/code%2fstyle-ivs-green.svg)](https://www.npmjs.com/package/eslint-plugin-ivs)
 
 # Motivation
 

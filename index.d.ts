@@ -20,7 +20,7 @@ interface ParseResult {
 
 declare function parse_url(
   remote_url: string,
-  options?: ParseOptions
+  options?: ParseOptions,
 ): ParseResult;
 
 declare namespace parse_url {

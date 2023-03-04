@@ -1,19 +1,23 @@
 {
   "name": "qnton-tld-extract",
   "author": "qnton",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
-    "update": "node update.js"
+    "update": "node update.js",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "license": "MIT",
   "main": "index.js",
   "types": "index.d.ts",
   "devDependencies": {
     "nyc": "^15.1.0",
+    "prettier": "^2.8.4",
+    "qnton-prettier-config": "^1.0.2",
     "tsd": "^0.17.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/qnton/tld-parser.git"
-  }
+  },
+  "prettier": "qnton-prettier-config"
 }
