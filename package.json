@@ -1,0 +1,19 @@
+{
+  "name": "qnton-tld-extract",
+  "author": "qnton",
+  "version": "1.0.0",
+  "scripts": {
+    "update": "node update.js"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "devDependencies": {
+    "nyc": "^15.1.0",
+    "tsd": "^0.17.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qnton/tld-parser.git"
+  }
+}
