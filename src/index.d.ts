@@ -10,6 +10,10 @@ interface ParseOptions {
    * @note This option can also be used when parsing URLs that contain IP addresses.
    */
   allowUnknownTLD?: boolean;
+  /**
+   * Allow parsing URLs that contain dotless TLDs.
+   */
+  allowDotlessTLD?: boolean;
 }
 
 interface ParseResult {
@@ -19,7 +23,7 @@ interface ParseResult {
 }
 
 declare function parse_url(
-  remote_url: string,
+  remote_url: string | url.Url,
   options?: ParseOptions,
 ): ParseResult;
 
