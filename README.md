@@ -1,21 +1,21 @@
-# qnton-tld-extractor
+# qnton-tld-extract
 
 `qnton-tld-extractor` is a simple npm package that allows you to extract the top-level domain (TLD), domain, and subdomain from a given URL.
 
 ## Installation
 
-You can install the `qnton-tld-extractor` package using npm:
+You can install the `qnton-tld-extract` package using npm:
 
 ```bash
-npm install qnton-tld-extractor
+npm install qnton-tld-extract
 ```
 
 ## Usage
 
-To use the `qnton-tld-extractor` package, you can import it in your **JavaScript** or **TypeScript** code:
+To use the `qnton-tld-extract` package, you can import it in your **JavaScript** or **TypeScript** code:
 
 ```js
-const parseUrl = require('qnton-tld-extractor');
+const parseUrl = require('qnton-tld-extract');
 
 const url = 'https://www.example.com/';
 
@@ -28,7 +28,7 @@ console.log(result);
 Or if you're using **TypeScript**:
 
 ```ts
-import parseUrl from 'qnton-tld-extractor';
+import parseUrl from 'qnton-tld-extract';
 
 const url = 'https://www.example.com/';
 
@@ -41,7 +41,7 @@ console.log(result);
 By default, parseUrl extracts the TLD, domain, and subdomain from the given URL. You can also extract the TLD, domain, and subdomain from just the hostname of a URL using the parse_host function:
 
 ```js
-const { parse_host } = require('qnton-tld-extractor');
+const { parse_host } = require('qnton-tld-extract');
 
 const host = 'www.example.com';
 
