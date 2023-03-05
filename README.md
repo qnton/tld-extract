@@ -1,6 +1,6 @@
 # qnton-tld-extract
 
-`qnton-tld-extractor` is a simple npm package that allows you to extract the top-level domain (TLD), domain, and subdomain from a given URL.
+`qnton-tld-extract` is a simple npm package that allows you to extract the top-level domain (TLD), domain, and subdomain from a given URL.
 
 ## Installation
 
