@@ -1,58 +1,88 @@
-[![Build Status](https://github.com/131/node-tld/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/131/node-tld/actions/workflows/test.yml) [![Coverage Status](https://coveralls.io/repos/github/131/node-tld/badge.svg?branch=master)](https://coveralls.io/github/131/node-tld?branch=master) [![Version](https://img.shields.io/npm/v/tld-extract.svg)](https://www.npmjs.com/package/tld-extract) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT) [![Code style](https://img.shields.io/badge/code%2fstyle-ivs-green.svg)](https://www.npmjs.com/package/eslint-plugin-ivs)
+# qnton-tld-extractor
 
-# Motivation
+`qnton-tld-extractor` is a simple npm package that allows you to extract the top-level domain (TLD), domain, and subdomain from a given URL.
 
-Extract the TLD/domain/subdomain parts of an URL/hostname against [mozilla TLDs official listing](https://publicsuffix.org/).
+## Installation
 
-# API
+You can install the `qnton-tld-extractor` package using npm:
 
-```
-var parser = require('tld-extract');
-
-console.log( parser("http://www.google.com") );
-console.log( parser("http://google.co.uk") );
-/**
-* >> { tld: 'com', domain: 'google.com', sub: 'www' }
-* >> { tld: 'co.uk', domain: 'google.co.uk', sub: '' }
-*/
-
+```bash
+npm install qnton-tld-extractor
 ```
 
-## Private TLDs
+## Usage
+
+To use the `qnton-tld-extractor` package, you can import it in your **JavaScript** or **TypeScript** code:
+
+```js
+const parseUrl = require('qnton-tld-extractor');
+
+const url = 'https://www.example.com/';
+
+const result = parseUrl(url);
+
+console.log(result);
+// Output: { tld: 'com', domain: 'example.com', sub: 'www' }
+```
+
+Or if you're using **TypeScript**:
+
+```ts
+import parseUrl from 'qnton-tld-extractor';
+
+const url = 'https://www.example.com/';
+
+const result = parseUrl(url);
+
+console.log(result);
+// Output: { tld: 'com', domain: 'example.com', sub: 'www' }
+```
+
+By default, parseUrl extracts the TLD, domain, and subdomain from the given URL. You can also extract the TLD, domain, and subdomain from just the hostname of a URL using the parse_host function:
+
+```js
+const { parse_host } = require('qnton-tld-extractor');
+
+const host = 'www.example.com';
+
+const result = parse_host(host);
+
+console.log(result);
+// Output: { tld: 'com', domain: 'example.com', sub: 'www' }
+```
+
+The parse_host function accepts an optional ParseOptions object that allows you to configure how the host is parsed. The available options are:
+
+### Private TLDs
 
 Private TLDs are supported, see [chromium source code for specs](https://chromium.googlesource.com/chromium/src/+/master/net/tools/tld_cleanup/tld_cleanup.cc)
 
-```
-console.log( parser("http://jeanlebon.cloudfront.net"));
-/**
-* >> { tld : 'net', domain : 'cloudfront.net', sub : 'jeanlebon' };
-*/
+```js
+console.log(parser('http://www.example.com'));
+// Output:  { tld : 'com', domain : 'example.com', sub : 'www' };
 
-
-console.log( parser("http://jeanlebon.cloudfront.net", {allowPrivateTLD : true}));
-/**
-* >> { tld : 'cloudfront.net', domain : 'jeanlebon.cloudfront.net', sub : '' };
-*/
+console.log(parser('http://www.example.com', { allowPrivateTLD: true }));
+// Output: { tld : 'example.com', domain : 'www.example.com', sub : '' };
 ```
 
-## Unknown TLDs (level0)
+### Unknown TLDs (level0)
 
 By default, unknown TLD throw an exception, you can allow them and use tld-extract as a parser using the `allowUnknownTLD` option
 
-```
+```js
   parse("http://nowhere.local")
     >> throws /Invalid TLD/
 
-  parse("http://nowhere.local", {allowUnknownTLD : true}))
+  parse("http://nowhere.local", {allowUnknownTLD : true})
     >> { tld : 'local', domain : 'nowhere.local', sub : '' }
 
 ```
 
-## DotLess domain
+### DotLess domain
 
-Using a tld as a direct domain name, or [dotless domain](https://en.wikipedia.org/wiki/Top-level_domain#Dotless_domains) is highly not recommended (ICANN and IAB have spoken out against the practice, classifying it as a security risk among other concerns.[34] ICANN's Security and Stability Advisory Committee (SSAC) additionally claims that SMTP "requires at least two labels in the FQDN of a mail address" and, as such, mail servers would reject emails to addresses with dotless domains), and will throw an error in `tld-extract`. You can override this behavior using the `allowDotlessTLD` option.
+Using a tld as a direct domain name, or [dotless domain](https://en.wikipedia.org/wiki/Top-level_domain#Dotless_domains) is highly not recommended (ICANN and IAB have spoken out against the practice, classifying it as a security risk among other concerns. ICANN's Security and Stability Advisory Committee (SSAC) additionally claims that SMTP "requires at least two labels in the FQDN of a mail address" and, as such, mail servers would reject emails to addresses with dotless domains), and will throw an error in `tld-extract`. You can override this behavior using the `allowDotlessTLD` option.
 
-```
+```js
   parse("http://notaires.fr")
     >> throws /Invalid TLD/
 
@@ -61,27 +91,6 @@ Using a tld as a direct domain name, or [dotless domain](https://en.wikipedia.or
 
 ```
 
-# Why
-
-- no dependencies
-- really fast
-- full code coverage
-- easy to read (10 lines)
-- easily updatable vs mozilla TLDs source list
-- TypeScript support
-
-# Maintenance
-
-You can update the remote hash table using `npm run update`
-
-# Not Invented Here
-
-- A port of a [yks/PHP library](https://github.com/131/yks/blob/master/class/exts/http/urls.php)
-
-- [tldextract](https://github.com/masylum/tldextract) => bad API, (no need for async, "domain" property is wrong), no need for dependencies
-- [tld](https://github.com/donpark/node-tld/blob/master/lib/tld.js) => (nothing bad, a bit outdated )
-- [tld.js](https://github.com/ramitos/tld.js) => no sane way to prove/trust/update TLD listing
-
-# Credits
+## Credits
 
 - [131](https://github.com/131)
