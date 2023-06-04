@@ -1,7 +1,7 @@
 {
   "name": "qnton-tld-extract",
   "author": "qnton",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "scripts": {
     "update": "node src/assets/update.js",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
