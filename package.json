@@ -1,25 +1,34 @@
 {
-  "name": "qnton-tld-extract",
-  "author": "qnton",
-  "version": "2.0.2",
-  "scripts": {
-    "update": "node src/assets/update.js",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
-    "test": "mocha"
-  },
-  "license": "MIT",
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
-  "devDependencies": {
-    "expect.js": "^0.3.1",
-    "mocha": "^3.1.2",
-    "prettier": "^2.8.4",
-    "qnton-prettier-config": "^1.0.2",
-    "tsd": "^0.17.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/qnton/tld-parser.git"
-  },
-  "prettier": "qnton-prettier-config"
+	"name": "@qnton/tld-extract",
+	"author": "qnton",
+	"version": "2.0.3",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "dist/index.cjs",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsup src/index.ts --format esm,cjs --dts",
+		"update": "node src/assets/update.js",
+		"check": "biome check --write --unsafe --max-diagnostics none",
+		"test": "tsx --test test/index.spec.ts"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"@biomejs/biome": "2.4.4",
+		"@types/node": "^25.3.2",
+		"tsup": "^8.5.1",
+		"tsx": "^4.21.0",
+		"typescript": "^5.9.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/qnton/tld-parser.git"
+	}
 }

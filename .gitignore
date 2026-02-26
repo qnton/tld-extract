@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# TLD data
+src/assets/effective_tld_names.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
